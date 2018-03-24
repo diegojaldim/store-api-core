@@ -18,7 +18,7 @@ class CreateProdutosTable extends Migration
             $table->string('nome', 255);
             $table->longText('descricao')->nullable();
             $table->float('preco', 9, 2);
-            $table->binary('imagem')->nullable();
+            $table->string('imagem', 255)->nullable();
             $table->timestamps();
         });
     }
