@@ -113,7 +113,7 @@ class CartController extends Controller
     public function destroy($id)
     {
         Cart::session($this->userID())->remove($id);
-        $this->responseSuccess('Produto excluído com sucesso', ['cart' => $this->cart()]);
+        return $this->responseSuccess('Produto excluído com sucesso', ['cart' => $this->cart()]);
     }
     
     /**
