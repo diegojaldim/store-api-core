@@ -22,6 +22,7 @@ Route::post('/register', 'PassportController@register');
 
 Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/get-details', 'PassportController@getDetails');
+    Route::resource('/carts', 'CartController');
 });
 
 Route::resource('/produtos', 'ProdutoController');
