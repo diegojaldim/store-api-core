@@ -47,7 +47,7 @@ class ProdutoController extends Controller
      */
     public function show($id)
     {
-        //
+        return new ProdutoResource(Produto::with('categorias')->find($id));
     }
 
     /**
