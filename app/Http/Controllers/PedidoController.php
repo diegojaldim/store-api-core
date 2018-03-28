@@ -53,13 +53,15 @@ class PedidoController extends Controller
             return $this->responseFail('Erro ao criar pedido', ['error' => $validator->errors()]);
         }
         
+        $cart = Cart::session($user->id);
+        
         $pedido->user_id = $user->id;
         $pedido->status_id = '1';
         $pedido->endereco_entrega = $input['endereco_entrega'];
+        $pedido->total = $cart->getTotal();
         $pedido->save();
         
         $pedidoID = $pedido->id;
-        $cart = Cart::session($user->id);
         
         foreach($cart->getContent()->toArray() as $item){
             $pedidoItem = new PedidoItem();

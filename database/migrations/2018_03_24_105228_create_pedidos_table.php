@@ -25,6 +25,7 @@ class CreatePedidosTable extends Migration
                     ->references('id')
                     ->on('status')
                     ->onDelete('cascade');
+            $table->float('total', 9, 2);
             $table->string('endereco_entrega', 250);
             $table->timestamps();
         });
