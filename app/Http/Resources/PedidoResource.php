@@ -21,6 +21,7 @@ class PedidoResource extends Resource
             'user' => new UserResource(User::find($this->user_id)),
             'status' => new StatusResource(Status::find($this->status_id)),
             'endereco_entrega' => $this->endereco_entrega,
+            'total' => $this->total,
             'items' => PedidoItemResource::collection($this->whenLoaded('items')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at

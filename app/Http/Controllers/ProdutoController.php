@@ -13,9 +13,15 @@ class ProdutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Produto $produto)
+    public function index(Produto $produto, Request $request)
     {
-        return ProdutoResource::collection($produto->with('categorias')->paginate());
+        $search = [];
+        
+        if($request->search){
+            $search[] = ['nome', 'LIKE', $request->search . '%'];
+        }
+        
+        return ProdutoResource::collection($produto->with('categorias')->where($search)->paginate());
     }
 
     /**
